@@ -1,17 +1,12 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[ ]:
 
-
-# -*- coding: utf-8 -*-
 import matplotlib.pyplot as plt
 import numpy as np
 import random
 import fun
 
-
-# In[ ]:
 
 
 # read map
@@ -19,25 +14,19 @@ XY = np.random.randint(1,100,(20,2))    #20 dots with (x,y)
 N = XY.shape[0]                         
 
 
-# In[ ]:
-
-
-# Perameters of ACO
+# Set up perameters of ACO
 MaxGen=100 #Iteration
 popsize=20 #population of ants
 alpha=4    #α
 beta=1     #β
 rho=0.5    #ρ
 Q=5        #q
-#acoValues = np.zeros([MaxGen * popsize, 2])   # 
 
 
-# Set up map and perameters of ACO
-
-# In[ ]:
 
 
-# distance
+
+# Count distance between nodes
 dmat=np.zeros([N,N])
 
 for i in range(0,N-1):
@@ -49,12 +38,8 @@ temp = dmat.copy()
 dmat[temp==0.0] = np.spacing(1)             #
 
 
-# Count distance between nodes
 
-# In[ ]:
-
-
-# Herustic value
+# Set up herustic value
 Eta=np.zeros([N,N])
 for i in range(N):
     for j in range(N):
@@ -64,11 +49,6 @@ index0 = np.arange(0,N)
 Tau=np.ones([N,N])*0.1            # Initiate pheromone map
 tracemataco=np.zeros([MaxGen,2])    
 
-
-# Set up herustic value
-# 
-
-# In[ ]:
 
 
 # ACOmap
@@ -135,10 +115,8 @@ for gen in range(0,MaxGen):                   #Iteration
     tracemataco[gen,1]=np.mean(cost)                           # mean value
 
 
-# In[ ]:
 
-
-#%%        
+#plot outputs      
 plt.plot(tracemataco[:,0],'r-')
 plt.plot(tracemataco[:,1],'b-')
 plt.savefig('exp01.jpg')
@@ -148,11 +126,6 @@ for i in range(XY.shape[0]):
     plt.text(XY[i,0],XY[i,1],str(i))
     plt.savefig('exp02.jpg')
   
-   
-
-
-# In[ ]:
-
 
 
 
