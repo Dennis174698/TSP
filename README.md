@@ -32,7 +32,7 @@ In this way, the most optimal paths will accumulate the highest amounts of phero
    2. Scoring the route based on the total distance travelled to traverse it.`(cost= fun.decodingFun(RouteData,popsize,dmat,N))`<br>
    3. Update the best found solution if any of the new solutions are improvements.<br>
    4. Normalise the scores into the range [100, 200].<br>
-   5. Generate a map of pheromone to be distributed along the routes of the ants. This value is determined by `𝑞 / 𝑠𝑐𝑎𝑙𝑒𝑑` 𝑠𝑐𝑜𝑟𝑒pheromone to each path on the route, where q is some scaling factor.<br>
+   5. Generate a map of pheromone to be distributed along the routes of the ants. This value is determined by `𝑞 / 𝑠𝑐𝑎𝑙𝑒𝑑 𝑠𝑐𝑜𝑟𝑒`pheromone to each path on the route, where q is some scaling factor.<br>
    6.Decay the existing pheromone and add the required new pheromone using the following equation:<br>
 `𝑝ℎ𝑒𝑟𝑜𝑚𝑜𝑛𝑒 = 𝑐𝑢𝑟𝑟𝑒𝑛𝑡𝑃ℎ𝑒𝑟𝑜𝑚𝑜𝑛𝑒 ∗ (1 − ⍴) + 𝑛𝑒𝑤𝑃ℎ𝑒𝑟𝑜𝑚𝑜𝑛𝑒(Tau=Tau*(1-rho)+detaTau)`<br>
 Where:<br>
