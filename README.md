@@ -20,7 +20,8 @@ In this way, the most optimal paths will accumulate the highest amounts of phero
   a. Randomly choosing a starting location <br>
   b. Selecting the next location to visit based on a combination of the pheromone map and the heuristic factor. Specifically, each unvisited location is given a score using the following formula:  <br>
   
-  `𝑠𝑐𝑜𝑟𝑒 = 𝑝ℎ𝑒𝑟𝑜𝑚𝑜𝑛𝑒𝛼**α ∗ ℎ𝑒𝑢𝑟𝑖𝑠𝑡𝑖𝑐**β `
+  `𝑠𝑐𝑜𝑟𝑒 = 𝑝ℎ𝑒𝑟𝑜𝑚𝑜𝑛𝑒𝛼**α ∗ ℎ𝑒𝑢𝑟𝑖𝑠𝑡𝑖𝑐**β `<br>
+  `P[i]=(Tau[currNode,tempnextnode]**alpha)*(Eta[currNode,tempnextnode]**beta)`<br>
   
   
    Where:  `𝑝ℎ𝑒𝑟𝑜𝑚𝑜𝑛𝑒` = Quantity of pheromone on the path from the current location to the unvisited location.<br>
@@ -31,7 +32,14 @@ In this way, the most optimal paths will accumulate the highest amounts of phero
    2. Scoring the route based on the total distance travelled to traverse it.`(cost= fun.decodingFun(RouteData,popsize,dmat,N))`<br>
    3. Update the best found solution if any of the new solutions are improvements.<br>
    4. Normalise the scores into the range [100, 200].<br>
-   5. Generate a map of pheromone to be distributed along<br>
+   5. Generate a map of pheromone to be distributed along the routes of the ants. This value is determined by `𝑞 / 𝑠𝑐𝑎𝑙𝑒𝑑` 𝑠𝑐𝑜𝑟𝑒pheromone to each path on the route, where q is some scaling factor.<br>
+   6.Decay the existing pheromone and add the required new pheromone using the following equation:<br>
+`𝑝ℎ𝑒𝑟𝑜𝑚𝑜𝑛𝑒 = 𝑐𝑢𝑟𝑟𝑒𝑛𝑡𝑃ℎ𝑒𝑟𝑜𝑚𝑜𝑛𝑒 ∗ (1 − ⍴) + 𝑛𝑒𝑤𝑃ℎ𝑒𝑟𝑜𝑚𝑜𝑛𝑒(Tau=Tau*(1-rho)+detaTau)`<br>
+Where:<br>
+`𝑝ℎ𝑒𝑟𝑜𝑚𝑜𝑛𝑒` = Updated pheromone value for the path.<br>
+`𝑐𝑢𝑟𝑟𝑒𝑛𝑡𝑃ℎ𝑒𝑟𝑜𝑚𝑜𝑛𝑒` = Pheromone currently on the path.<br>
+`⍴ = Pheromone decay constant`.<br>
+`𝑛𝑒𝑤𝑃ℎ𝑒𝑟𝑜𝑚𝑜𝑛𝑒` = Pheromone to be added based on the route score.<br>
 
 
  
