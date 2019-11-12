@@ -10,4 +10,7 @@ This is achieved by sending a number of waves of ants to traverse the graph. The
 In this way, the most optimal paths will accumulate the highest amounts of pheromone and are more likely to be chosen by subsequent generations of ants. <br>
 
 ### Implementation
-![](https://github.com/Dennis174698/TSP/raw/master/workflow1.png)
+<div align="center">
+<img src="https://github.com/Dennis174698/TSP/raw/master/workflow1.png" height="646px" >    
+</div>
+ 
