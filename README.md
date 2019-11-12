@@ -32,6 +32,6 @@ In this way, the most optimal paths will accumulate the highest amounts of phero
    3. Update the best found solution if any of the new solutions are improvements.<br>
    4. Normalise the scores into the range [100, 200].<br>
    5. Generate a map of pheromone to be distributed along<br>
-  <strong>double underscores</strong>
+
 
  
